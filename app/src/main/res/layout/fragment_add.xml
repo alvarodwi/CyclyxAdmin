@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -11,11 +12,48 @@
         android:layout_height="match_parent"
         tools:context=".ui.add.AddFragment">
 
-        <!-- TODO: Update blank fragment layout -->
         <TextView
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/exo2_bold"
+            android:textSize="@dimen/_36sdp"
+            android:id="@+id/Title"
+            android:text="Add"
+            android:textColor="@color/colorAccent"
+            android:layout_margin="@dimen/_10sdp"/>
+
+        <LinearLayout
+            app:layout_constraintTop_toBottomOf="@id/Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_16sdp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/EdtTitle"
+                style="@style/edit_text"
+                android:hint="Title"/>
+
+            <EditText
+                android:id="@+id/EdtCont"
+                style="@style/edit_text"
+                android:layout_height="@dimen/_300sdp"
+                android:hint="Your Content"
+                android:lines="10"
+                android:maxLines="15"
+                android:inputType="text|textMultiLine"/>
+
+            <Button
+                style="@style/BackButton"
+                android:text="Submit"
+                android:background="@color/colorAccent"
+                android:textColor="@color/whiteText"
+                android:layout_gravity="end"
+                android:layout_margin="@dimen/_10sdp"/>
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

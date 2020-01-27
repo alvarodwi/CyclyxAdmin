@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.extra.cyclyxadmin.ui.motivasi.MotivasiFragment
 import com.extra.cyclyxadmin.ui.tips.TipsListingFragment
 import com.extra.cyclyxadmin.ui.tutorial.TutorialListingFragment
 
@@ -14,9 +15,18 @@ class MainViewPager(private val context: Context, fragmentManager: FragmentManag
         when(position){
             0 -> fragment = TipsListingFragment()
             1 -> fragment = TutorialListingFragment()
+            2 -> fragment = MotivasiFragment()
         }
         return fragment as Fragment
     }
 
-    override fun getCount(): Int = 2
+    override fun getPageTitle(position: Int): CharSequence? {
+        return when(position){
+            1 -> "Tutorial"
+            2 -> "Motivasi"
+            else -> "Tips"
+        }
+    }
+
+    override fun getCount(): Int = 3
 }

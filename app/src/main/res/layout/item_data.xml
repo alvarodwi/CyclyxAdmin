@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -12,34 +13,55 @@
     </data>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/tvItemUid"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <androidx.cardview.widget.CardView
+            style="@style/CardView.Light"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:text="@{item.uid}"
-            tools:text="UID : random string"
-            />
+            android:layout_margin="10dp"
+            android:elevation="10sp"
+            app:cardCornerRadius="5dp">
+            <LinearLayout
+                android:layout_margin="10sp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tvItemContent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:text="@{item.content}"
-            tools:text="Content!"
-            />
+                <TextView
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:id="@+id/tvItemUid"
+                    android:fontFamily="@font/exo2_regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:text="@{item.uid}"
+                    android:textColor="@color/design_default_color_primary"
+                    tools:text="UID : random string"
+                    />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="DELETE"
-            android:onClick="@{() -> clickListener.onDeleteResult(item)}"
-            />
+                <TextView
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:id="@+id/tvItemContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:fontFamily="@font/exo2_regular"
+                    android:text="@{item.content}"
+                    tools:text="Content!"
+                    />
 
+                <Button
+                    style="@style/BackButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DELETE"
+                    android:layout_gravity="center"
+                    android:onClick="@{() -> clickListener.onDeleteResult(item)}"
+                    />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 </layout>
