@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main_navigation">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/references">
+
+    <fragment
+        android:id="@+id/references"
+        android:name="com.extra.cyclyxadmin.ui.references.ReferencesFragment"
+        android:label="References"
+        tools:layout="@layout/fragment_references">
+        <action
+            android:id="@+id/nav_to_add_from_fragment"
+            app:destination="@id/add"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/add"
+        android:name="com.extra.cyclyxadmin.ui.references.add.AddFragment"
+        android:label="Add" >
+        <argument
+            android:name="refType"
+            app:argType="string"/>
+        <argument
+            android:name="modelId"
+            app:nullable="true"
+            app:argType="string"/>
+    </fragment>
+
 
 </navigation>

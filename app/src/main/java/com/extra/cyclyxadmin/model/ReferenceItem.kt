@@ -3,16 +3,17 @@ package com.extra.cyclyxadmin.model
 import com.google.firebase.database.Exclude
 
 data class ReferenceItem(
-    val uid : String? = "",
-    val content : String? = "",
-    val type : String? = ""
+    var uid : String = "",
+    var title : String = "",
+    var content : String = "",
+    var type : String = ""
 ){
     @Exclude
     fun toMap() : Map<String,Any?>{
         return mapOf(
             "uid" to uid,
-            "content" to content,
-            "type" to type
+            "title" to title,
+            "content" to content
         )
     }
 }

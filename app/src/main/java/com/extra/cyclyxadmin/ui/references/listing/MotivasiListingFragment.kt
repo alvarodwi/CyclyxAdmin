@@ -1,4 +1,4 @@
-package com.extra.cyclyxadmin.ui.references.motivasi
+package com.extra.cyclyxadmin.ui.references.listing
 
 
 import android.os.Bundle
@@ -12,16 +12,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 
-import com.extra.cyclyxadmin.R
 import com.extra.cyclyxadmin.databinding.FragmentMotivasiListingBinding
 import com.extra.cyclyxadmin.ui.adapter.MainRVAdapter
 import com.extra.cyclyxadmin.ui.references.BaseReferencesVM
 import com.extra.cyclyxadmin.ui.references.ReferencesFragmentDirections
 import com.extra.cyclyxadmin.utils.firebaseConstants.MOTIVASI_ITEM
-import com.extra.cyclyxadmin.utils.actionConstants
 import com.extra.cyclyxadmin.utils.actionConstants.DELETE_ITEM
 import com.extra.cyclyxadmin.utils.actionConstants.EDIT_ITEM
-import com.extra.cyclyxadmin.utils.firebaseConstants
 
 /**
  * A simple [Fragment] subclass.
@@ -40,7 +37,12 @@ class MotivasiListingFragment : Fragment() {
         binding = FragmentMotivasiListingBinding.inflate(inflater)
         binding.lifecycleOwner = this
 
-        viewModel = ViewModelProvider(this,BaseReferencesVM.Factory(MOTIVASI_ITEM,application!!)).get(BaseReferencesVM::class.java)
+        viewModel = ViewModelProvider(this,
+            BaseReferencesVM.Factory(
+                MOTIVASI_ITEM,
+                application!!
+            )
+        ).get(BaseReferencesVM::class.java)
         binding.viewModel = viewModel
 
         binding.rvMotivasi.layoutManager = LinearLayoutManager(context)
@@ -49,7 +51,9 @@ class MotivasiListingFragment : Fragment() {
                 EDIT_ITEM -> {
                     this.findNavController().navigate(
                         ReferencesFragmentDirections.navToAddFromFragment(
-                            firebaseConstants.MOTIVASI_ITEM,uid))
+                            MOTIVASI_ITEM, uid
+                        )
+                    )
                 }
                 DELETE_ITEM -> {
                     Log.d("ADD","Deleted -> $uid")

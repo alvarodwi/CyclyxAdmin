@@ -1,59 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.extra.cyclyxadmin.ui.references.add.AddVM" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.add.AddFragment">
+        tools:context=".ui.references.add.AddFragment">
 
         <TextView
+            android:id="@+id/lblTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:fontFamily="@font/exo2_bold"
+            android:text="@{viewModel.pageTitle}"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/_36sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            tools:text="Add" />
+
+        <TextView
+            android:id="@+id/lblSubTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
             android:fontFamily="@font/exo2_bold"
-            android:textSize="@dimen/_36sdp"
-            android:id="@+id/Title"
-            android:text="Add"
+            android:text="@{viewModel.type}"
             android:textColor="@color/colorAccent"
-            android:layout_margin="@dimen/_10sdp"/>
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toTopOf="@id/containerInput"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lblTitle"
+            tools:text="Type" />
 
-        <LinearLayout
-            app:layout_constraintTop_toBottomOf="@id/Title"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/containerInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_16sdp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lblTitle">
 
             <EditText
                 android:id="@+id/EdtTitle"
                 style="@style/edit_text"
-                android:hint="Title"/>
+                android:hint="Title"
+                android:text="@{viewModel.item.title}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Item Title" />
 
             <EditText
                 android:id="@+id/EdtCont"
                 style="@style/edit_text"
                 android:layout_height="@dimen/_300sdp"
-                android:hint="Your Content"
+                android:hint="Content To Show"
+                android:inputType="text|textMultiLine"
                 android:lines="10"
                 android:maxLines="15"
-                android:inputType="text|textMultiLine"/>
+                android:text="@{viewModel.item.content}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/EdtTitle" />
 
             <Button
+                android:id="@+id/btnSubmit"
                 style="@style/BackButton"
-                android:text="Submit"
-                android:background="@color/colorAccent"
-                android:textColor="@color/whiteText"
                 android:layout_gravity="end"
-                android:layout_margin="@dimen/_10sdp"/>
-        </LinearLayout>
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@color/colorAccent"
+                android:text="@{viewModel.btnText}"
+                android:textColor="@color/whiteText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/EdtCont"
+                tools:text="Submit" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

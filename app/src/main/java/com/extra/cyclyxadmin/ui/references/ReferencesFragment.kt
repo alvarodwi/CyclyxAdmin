@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.extra.cyclyxadmin.R
 import com.extra.cyclyxadmin.databinding.FragmentReferencesBinding
 import com.extra.cyclyxadmin.ui.adapter.MainViewPager
+import com.extra.cyclyxadmin.ui.references.ReferencesFragmentDirections
 import com.extra.cyclyxadmin.utils.firebaseConstants.MOTIVASI_ITEM
 import com.extra.cyclyxadmin.utils.firebaseConstants.TIPS_ITEM
 import com.extra.cyclyxadmin.utils.firebaseConstants.TUTORIAL_ITEM
@@ -73,15 +74,30 @@ class ReferencesFragment : Fragment() {
         }
 
         binding.btnTips.setOnClickListener{
-            this.findNavController().navigate(ReferencesFragmentDirections.navToAddFromFragment(TIPS_ITEM,null))
+            this.findNavController().navigate(
+                ReferencesFragmentDirections.navToAddFromFragment(
+                    TIPS_ITEM,
+                    null
+                )
+            )
         }
 
         binding.btnTutor.setOnClickListener{
-            this.findNavController().navigate(ReferencesFragmentDirections.navToAddFromFragment(TUTORIAL_ITEM,null))
+            this.findNavController().navigate(
+                ReferencesFragmentDirections.navToAddFromFragment(
+                    TUTORIAL_ITEM,
+                    null
+                )
+            )
         }
 
         binding.btnMot.setOnClickListener{
-            this.findNavController().navigate(ReferencesFragmentDirections.navToAddFromFragment(MOTIVASI_ITEM,null))
+            this.findNavController().navigate(
+                ReferencesFragmentDirections.navToAddFromFragment(
+                    MOTIVASI_ITEM,
+                    null
+                )
+            )
         }
 
         binding.container.adapter = mainVPAdapter

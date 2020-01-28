@@ -1,4 +1,4 @@
-package com.extra.cyclyxadmin.ui.references.tutorial
+package com.extra.cyclyxadmin.ui.references.listing
 
 
 import android.os.Bundle
@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 
-import com.extra.cyclyxadmin.R
 import com.extra.cyclyxadmin.databinding.FragmentTutorialListingBinding
 import com.extra.cyclyxadmin.ui.adapter.MainRVAdapter
 import com.extra.cyclyxadmin.ui.references.BaseReferencesVM
@@ -38,7 +37,11 @@ class TutorialListingFragment : Fragment() {
         binding.lifecycleOwner = this
 
         viewModel = ViewModelProvider(this,
-            BaseReferencesVM.Factory(firebaseConstants.TUTORIAL_ITEM,application!!)).get(
+            BaseReferencesVM.Factory(
+                firebaseConstants.TUTORIAL_ITEM,
+                application!!
+            )
+        ).get(
             BaseReferencesVM::class.java)
         binding.viewModel = viewModel
 
@@ -48,7 +51,9 @@ class TutorialListingFragment : Fragment() {
                 actionConstants.EDIT_ITEM -> {
                     this.findNavController().navigate(
                         ReferencesFragmentDirections.navToAddFromFragment(
-                            firebaseConstants.TUTORIAL_ITEM,uid))
+                            firebaseConstants.TUTORIAL_ITEM, uid
+                        )
+                    )
                 }
                 actionConstants.DELETE_ITEM -> {
                     Log.d("ADD","Deleted -> $uid")

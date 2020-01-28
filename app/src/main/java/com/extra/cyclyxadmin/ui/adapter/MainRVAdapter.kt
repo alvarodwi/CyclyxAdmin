@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.extra.cyclyxadmin.databinding.ItemDataBinding
 import com.extra.cyclyxadmin.model.ReferenceItem
-import com.extra.cyclyxadmin.utils.DELETE_ITEM
-import com.extra.cyclyxadmin.utils.EDIT_ITEM
+import com.extra.cyclyxadmin.utils.actionConstants.DELETE_ITEM
+import com.extra.cyclyxadmin.utils.actionConstants.EDIT_ITEM
 
 class MainRVAdapter(val clickListener: MainClickListener) :
     ListAdapter<ReferenceItem, MainRVAdapter.MainViewHolder>(MainDiffUtil) {

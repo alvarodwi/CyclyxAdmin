@@ -1,4 +1,4 @@
-package com.extra.cyclyxadmin.ui.references.tips
+package com.extra.cyclyxadmin.ui.references.listing
 
 
 import android.os.Bundle
@@ -36,7 +36,11 @@ class TipsListingFragment : Fragment() {
         binding.lifecycleOwner = this
 
         viewModel = ViewModelProvider(this,
-            BaseReferencesVM.Factory(firebaseConstants.TIPS_ITEM,application!!)).get(
+            BaseReferencesVM.Factory(
+                firebaseConstants.TIPS_ITEM,
+                application!!
+            )
+        ).get(
             BaseReferencesVM::class.java)
         binding.viewModel = viewModel
 
@@ -46,7 +50,9 @@ class TipsListingFragment : Fragment() {
                 actionConstants.EDIT_ITEM -> {
                     this.findNavController().navigate(
                         ReferencesFragmentDirections.navToAddFromFragment(
-                            firebaseConstants.TIPS_ITEM,uid))
+                            firebaseConstants.TIPS_ITEM, uid
+                        )
+                    )
                 }
                 actionConstants.DELETE_ITEM -> {
                     Log.d("ADD","Deleted -> $uid")

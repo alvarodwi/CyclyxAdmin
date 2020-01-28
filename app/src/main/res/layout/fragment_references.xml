@@ -1,14 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.references.ReferencesFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".ui.references.ReferencesFragment">
 
-</FrameLayout>
+        <com.google.android.material.tabs.TabLayout
+            style="@style/FontTab"
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tabBackground="@color/colorPrimary"
+            app:tabSelectedTextColor="@color/FontColorBlack"
+            app:tabTextColor="@color/whiteText"
+            app:tabIndicatorColor="@color/font_bold_purple"
+            app:tabMode="fixed" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_below="@+id/tabs"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tabs">
+
+        </androidx.viewpager.widget.ViewPager>
+
+        <TextView
+            android:id="@+id/tvBtn3"
+            android:background="@color/whiteText"
+            android:padding="5dp"
+            android:textSize="16dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/btnTips"
+            app:layout_constraintBottom_toBottomOf="@id/btnTips"
+            app:layout_constraintTop_toTopOf="@id/btnTips"
+            android:text="Tips"
+            android:visibility="invisible" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/btnTips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btnTutor"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="15dp"
+            android:visibility="invisible"
+            android:src="@drawable/ic_elemental_tip"
+            android:tint="@color/whiteText" />
+
+        <TextView
+            android:id="@+id/tvBtn2"
+            android:background="@color/whiteText"
+            android:padding="5dp"
+            android:textSize="16dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/btnTutor"
+            app:layout_constraintBottom_toBottomOf="@id/btnTutor"
+            app:layout_constraintTop_toTopOf="@id/btnTutor"
+            android:text="Tutorial"
+            android:visibility="invisible" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/btnTutor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btnMot"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="15dp"
+            android:visibility="invisible"
+            android:src="@drawable/ic_laptop"
+            android:tint="@color/whiteText" />
+
+        <TextView
+            android:id="@+id/tvBtn1"
+            android:background="@color/whiteText"
+            android:padding="5dp"
+            android:textSize="16dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/btnMot"
+            app:layout_constraintBottom_toBottomOf="@id/btnMot"
+            app:layout_constraintTop_toTopOf="@id/btnMot"
+            android:text="Motivasi"
+            android:visibility="invisible" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/btnMot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/fabMain"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="15dp"
+            android:visibility="invisible"
+            android:src="@drawable/ic_support"
+            android:tint="@color/whiteText" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/fabMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="20dp"
+            android:src="@drawable/ic_add_black_24dp"
+            android:tint="@color/whiteText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
