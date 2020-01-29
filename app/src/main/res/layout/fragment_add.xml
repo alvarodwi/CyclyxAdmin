@@ -27,6 +27,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/lblSubTitle"
             tools:text="Add" />
 
         <TextView
@@ -53,7 +54,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lblTitle">
+            app:layout_constraintTop_toBottomOf="@id/lblSubTitle">
 
             <EditText
                 android:id="@+id/EdtTitle"
