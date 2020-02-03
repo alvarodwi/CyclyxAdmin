@@ -48,8 +48,8 @@ class MainRVAdapter(val clickListener: MainClickListener) :
         }
     }
 
-    class MainClickListener(val clickListener: (dataId: String?, action: String) -> Unit) {
-        fun onClickResult(data: ReferenceItem) = clickListener(data.uid, EDIT_ITEM)
-        fun onDeleteResult(data: ReferenceItem) = clickListener(data.uid, DELETE_ITEM)
+    class MainClickListener(val clickListener: (data : ReferenceItem, action: String) -> Unit) {
+        fun onClickResult(data: ReferenceItem) = clickListener(data, EDIT_ITEM)
+        fun onDeleteResult(data: ReferenceItem) = clickListener(data, DELETE_ITEM)
     }
 }

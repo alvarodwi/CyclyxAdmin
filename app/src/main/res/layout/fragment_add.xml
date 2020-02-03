@@ -57,27 +57,18 @@
             app:layout_constraintTop_toBottomOf="@id/lblSubTitle">
 
             <EditText
-                android:id="@+id/EdtTitle"
-                style="@style/edit_text"
-                android:hint="Title"
-                android:text="@{viewModel.item.title}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Item Title" />
-
-            <EditText
                 android:id="@+id/EdtCont"
                 style="@style/edit_text"
                 android:layout_height="@dimen/_300sdp"
                 android:hint="Content To Show"
+                android:gravity="start"
                 android:inputType="text|textMultiLine"
                 android:lines="10"
                 android:maxLines="15"
                 android:text="@{viewModel.item.content}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/EdtTitle" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/btnSubmit"

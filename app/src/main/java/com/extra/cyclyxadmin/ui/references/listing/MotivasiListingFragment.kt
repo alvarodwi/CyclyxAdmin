@@ -46,18 +46,18 @@ class MotivasiListingFragment : Fragment() {
         binding.viewModel = viewModel
 
         binding.rvMotivasi.layoutManager = LinearLayoutManager(context)
-        val adapter = MainRVAdapter(MainRVAdapter.MainClickListener{ uid, action ->
+        val adapter = MainRVAdapter(MainRVAdapter.MainClickListener{ data, action ->
             when(action){
                 EDIT_ITEM -> {
                     this.findNavController().navigate(
                         ReferencesFragmentDirections.navToAddFromFragment(
-                            MOTIVASI_ITEM, uid
+                            MOTIVASI_ITEM, data
                         )
                     )
                 }
                 DELETE_ITEM -> {
-                    Log.d("ADD","Deleted -> $uid")
-                    viewModel.onDeleteItem(uid)
+                    Log.d("ADD","Deleted -> $data")
+                    viewModel.onDeleteItem(data)
                 }
             }
         })

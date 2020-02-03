@@ -10,7 +10,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 
-class AddVM(val type: String, private val uid: String?, val app: Application) : AndroidViewModel(app) {
+class AddVM(val type: String, private val data: ReferenceItem?, val app: Application) : AndroidViewModel(app) {
     private val repo = MainRepository()
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
@@ -19,23 +19,25 @@ class AddVM(val type: String, private val uid: String?, val app: Application) : 
     val item : LiveData<ReferenceItem>
         get() = _item
 
-    val pageTitle = if(uid == null){
+    val pageTitle = if(data == null){
         "Add"
     }else{
         "Edit"
     }
 
-    val btnText = if(uid == null){
+    val btnText = if(data == null){
         "Submit"
     }else{
         "Update"
     }
 
     fun onBtnClicked(model : ReferenceItem){
-        if (uid == null){
+        if (data == null){
             repo.addReference(model)
             Log.d("ADD","Add Reference")
         }else{
+            model.uid = data.uid
+            Log.d("ADD",model.toString())
             repo.editReference(model)
             Log.d("ADD","Edit Reference")
         }
@@ -43,9 +45,9 @@ class AddVM(val type: String, private val uid: String?, val app: Application) : 
 
 
     init {
-        Log.d("ADD","UID -> $uid")
-        if(uid != null){
-            _item.value = repo.getItemReference(type,uid)
+        Log.d("ADD","UID -> $data")
+        if(data != null){
+            _item.value = data
         }
         Log.d("ADD","Item -> ${_item.value}")
     }
@@ -57,14 +59,14 @@ class AddVM(val type: String, private val uid: String?, val app: Application) : 
     }
 
 
-    class Factory(val type: String, val uid: String?, val app: Application) :
+    class Factory(val type: String, val data: ReferenceItem?, val app: Application) :
         ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(AddVM::class.java)) {
                 return AddVM(
                     type,
-                    uid,
+                    data,
                     app
                 ) as T
             }

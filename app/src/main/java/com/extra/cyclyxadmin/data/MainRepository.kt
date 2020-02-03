@@ -10,6 +10,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MainRepository{
     val database = FirebaseDatabase.getInstance().reference
@@ -57,8 +59,11 @@ class MainRepository{
         database.child(BASE_KEY).child(REFERENSI_KEY).child(model.type).child(uid).setValue(model)
     }
 
-    fun editReference(model : ReferenceItem){
-        database.child(BASE_KEY).child(REFERENSI_KEY).child(model.type).child(model.uid).setValue(model)
+    fun editReference(model : ReferenceItem?){
+        Log.d("ADD","${model?.uid}")
+        model?.let{
+            database.child(BASE_KEY).child(REFERENSI_KEY).child(model.type).child(model.uid).setValue(model)
+        }
     }
 
     fun removeReference(type: String,model : ReferenceItem?){

@@ -23,9 +23,9 @@
             android:name="refType"
             app:argType="string"/>
         <argument
-            android:name="modelId"
+            android:name="model"
             app:nullable="true"
-            app:argType="string"/>
+            app:argType="com.extra.cyclyxadmin.model.ReferenceItem"/>
     </fragment>
 
 

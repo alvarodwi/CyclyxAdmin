@@ -30,10 +30,9 @@ class BaseReferencesVM(val type: String, val app: Application) : AndroidViewMode
         _referenceList.value = repo.getAllReference(type)
     }
 
-    fun onDeleteItem(uid : String?){
-        uid?.let{
-            val item = repo.getItemReference(type,uid)
-            repo.removeReference(type,item)
+    fun onDeleteItem(data : ReferenceItem){
+        data?.let{
+            repo.removeReference(type,data)
         }
     }
 
